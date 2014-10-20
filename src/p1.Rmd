@@ -74,20 +74,15 @@ print(tabelaRegMD)
 
 ```
 
+---
+Questão(6)
+---
+Caso ele se considere muito ruim recomendaria Sul pois possui o melhor pior caso.
+Caso contrário (meio ruim, medio, bom e muito bom) , Centro-oeste.
 ```{r}
-barplot(table(dados$Horas.Diarias))
+print(summary(dados[is.element(dados$UF, regiaoNE),]$Salario.Bruto))
+print(summary(dados[is.element(dados$UF, regiaoNO),]$Salario.Bruto))
+print(summary(dados[is.element(dados$UF, regiaoSE),]$Salario.Bruto))
+print(summary(dados[is.element(dados$UF, regiaoSL),]$Salario.Bruto))
+print(summary(dados[is.element(dados$UF, regiaoCO),]$Salario.Bruto))
 ```
-
-
-```{r}
-hist(dados$Salario.Bruto)
-boxplot(dados$Salario.Bruto)
-```
-
-You can also embed plots, for example:
-
-```{r, echo=FALSE}
-plot(cars)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
