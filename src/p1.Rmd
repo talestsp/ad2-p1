@@ -1,18 +1,38 @@
 ---
-title: "Entender os salários de profissionais de TI no Brasil."
+title: "Problema1: Entender os salários de profissionais de TI no Brasil."
 author: "Tales Pimentel"
 date: "15-10-2014"
 output: html_document
 ---
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Questão(1)
+---
+Rosling expôs graficamente dados sociais e de renda. Observando-os há 40 anos atrás se percebe que o mundo ocidental norte é mais rico que as demais regiões do planeta. Tais dados permanecem assim, porém com menos discrepância no início do século XXI. Contudo, quando se considera países isolados, se nota que há alguns que possuem dados financeiros e sociais mais elevados que os da região de origem e comparáveis aos países da OECD. 
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-
+---
+Questão(2)
+---
+Os profissionais catalogados podem ser compreendidos em três grandes grupos: concursados, iniciativa privada e outros.
 ```{r}
 dados = read.csv("../data/salarios-ti-regioes.csv")
+concursados = dados[dados$Iniciativa.Privada.ou.Concursado == "Concursado",]
+inic_privada = dados[dados$Iniciativa.Privada.ou.Concursado == "Iniciativa Privada",]
+outros = dados[dados$Iniciativa.Privada.ou.Concursado != "Iniciativa Privada" & dados$Iniciativa.Privada.ou.Concursado != "Concursado",]
+
+barplot(c(nrow(concursados), nrow(inic_privada), nrow(outros)), legend = c("Concursados", "Iniciativa Privada", "Outros"), col = c("red", "green", "blue"))
 ```
+
+As remunerações de cada grupo possuem distribuições diferentes. 
+Os da Iniciativa Privada estão quase igualmente distribuidos entre R$1000 e R$6000 com um pico de R$2000 a R$3000. 
+Os Concursados estão com um pouco de concentração de R$3000 até R$6000 
+Obs.: Para melhor visualização do histograma, em Iniciativa Privada, uma instância de saĺario atípico foi removida. Em Concursados, 3 ocorrências foram removidas pelo mesmo motivo.
+
+```{r}
+hist(concursados[concursados$Salario.Bruto < 12000,]$Salario.Bruto, col = "red", nclass = 10)
+hist(inic_privada[inic_privada$Salario.Bruto < 35000,]$Salario.Bruto, col = "green", nclass = 10)
+hist(outros$Salario.Bruto, col = "blue")
+```
+
 
 ```{r}
 barplot(table(dados$Salario.Bruto))
