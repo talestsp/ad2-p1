@@ -41,9 +41,37 @@ Questão(4)
 ---
 De fato eu esperava um ou mais picos de concentração de remuneração e os demais valores espalhados. Valores atípicos também eram esperados.
 
+---
+Questão(5)
+---
+Percebe-se que o ranking das regiões por média é diferente do ranking de regiões por mediana. Por um motivo óbvio, a mediana é menos sensível à presença de valores extremos enquanto que a média sim. E nesta coleção, há consideráveis instâncias atípicas.
 ```{r}
-barplot(table(dados$Salario.Bruto))
-hist(dados$Salario.Bruto)
+regiaoNE = c("MA","PI","CE","RN","PB","PE","AL","SE","BA")
+regiaoCO = c("DF","GO","MS","MT")
+regiaoSE = c("RJ","SP","MG","ES")
+regiaoSL = c("RS","SC","PR")
+regiaoNO = c("PA","AC","AM","RR","RO","TO","AP")
+mNE = mean(dados[is.element(dados$UF, regiaoNE),]$Salario.Bruto)
+mCO = mean(dados[is.element(dados$UF, regiaoCO),]$Salario.Bruto)
+mSE = mean(dados[is.element(dados$UF, regiaoSE),]$Salario.Bruto)
+mSL = mean(dados[is.element(dados$UF, regiaoSL),]$Salario.Bruto)
+mNO = mean(dados[is.element(dados$UF, regiaoNO),]$Salario.Bruto)
+
+tabelaRegM = data.frame("regiao" = c("Nordeste", "Centro-oeste", "Sudeste", "Sul", "Norte"), "media" = c(mNE, mCO, mSE, mSL, mNO) )
+tabelaRegM = tabelaRegM[with(tabelaRegM, order(-tabelaRegM$media)), ]
+rownames(tabelaRegM) = NULL
+print(tabelaRegM)
+
+mdNE = median(dados[is.element(dados$UF, regiaoNE),]$Salario.Bruto)
+mdCO = median(dados[is.element(dados$UF, regiaoCO),]$Salario.Bruto)
+mdSE = median(dados[is.element(dados$UF, regiaoSE),]$Salario.Bruto)
+mdSL = median(dados[is.element(dados$UF, regiaoSL),]$Salario.Bruto)
+mdNO = median(dados[is.element(dados$UF, regiaoNO),]$Salario.Bruto)
+tabelaRegMD = data.frame("regiao" = c("Nordeste", "Centro-oeste", "Sudeste", "Sul", "Norte"), "mediana" = c(mdNE, mdCO, mdSE, mdSL, mdNO) )
+tabelaRegMD = tabelaRegMD[with(tabelaRegMD, order(-tabelaRegMD$mediana)), ]
+rownames(tabelaRegMD) = NULL
+print(tabelaRegMD)
+
 ```
 
 ```{r}
