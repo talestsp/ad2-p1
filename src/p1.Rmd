@@ -37,7 +37,7 @@ hist(outros$Salario.Bruto, col = "blue")
 ```
 
 ---
-Questão($)
+Questão(4)
 ---
 De fato eu esperava um ou mais picos de concentração de remuneração e os demais valores espalhados. Valores atípicos também eram esperados.
 
