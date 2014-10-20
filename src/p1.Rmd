@@ -36,6 +36,10 @@ hist(inic_privada[inic_privada$Salario.Bruto < 35000,]$Salario.Bruto, col = "gre
 hist(outros$Salario.Bruto, col = "blue")
 ```
 
+---
+Questão($)
+---
+De fato eu esperava um ou mais picos de concentração de remuneração e os demais valores espalhados. Valores atípicos também eram esperados.
 
 ```{r}
 barplot(table(dados$Salario.Bruto))
