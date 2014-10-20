@@ -22,6 +22,9 @@ outros = dados[dados$Iniciativa.Privada.ou.Concursado != "Iniciativa Privada" & 
 barplot(c(nrow(concursados), nrow(inic_privada), nrow(outros)), legend = c("Concursados", "Iniciativa Privada", "Outros"), col = c("red", "green", "blue"))
 ```
 
+---
+Questão(3)
+---
 As remunerações de cada grupo possuem distribuições diferentes. 
 Os da Iniciativa Privada estão quase igualmente distribuidos entre R$1000 e R$6000 com um pico de R$2000 a R$3000. 
 Os Concursados estão com um pouco de concentração de R$3000 até R$6000 
